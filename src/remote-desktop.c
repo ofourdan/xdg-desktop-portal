@@ -1395,16 +1395,6 @@ handle_connect_to_eis (XdpDbusRemoteDesktop *object,
     }
 
   remote_desktop_session = (RemoteDesktopSession *)session;
-
-  if (!remote_desktop_session->uses_eis)
-    {
-      g_dbus_method_invocation_return_error (invocation,
-                                             G_DBUS_ERROR,
-                                             G_DBUS_ERROR_FAILED,
-                                             "Session is already connected");
-      return G_DBUS_METHOD_INVOCATION_HANDLED;
-    }
-
   switch (remote_desktop_session->state)
     {
     case REMOTE_DESKTOP_SESSION_STATE_INIT:
